@@ -1,7 +1,5 @@
 package com.subi.apsubi
 
-import android.app.PendingIntent.getActivity
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -16,7 +14,6 @@ class HomeActivity : AppCompatActivity() {
         if (acct != null) {
             tvText.text = acct.idToken
         }
-
 
     }
 }
