@@ -1,6 +1,5 @@
 package com.subi.apsubi
 
-import android.R.attr.data
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
