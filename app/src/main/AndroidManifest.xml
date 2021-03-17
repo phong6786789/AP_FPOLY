@@ -14,7 +14,9 @@
         android:theme="@style/Theme.APSubi"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".PlashScreen"
+        <activity android:name=".HomeActivity"></activity>
+        <activity
+            android:name=".PlashScreen"
             android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity">
-        </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
