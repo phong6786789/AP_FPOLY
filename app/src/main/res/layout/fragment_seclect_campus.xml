@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screen.campus.SelectCampusFragment">
-
-    <ImageView
+<layout>
+    <data>
+        <variable
+            name="campus"
+            type="com.subi.apsubi.screen.campus.CampusViewModel" />
+    </data>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:rotation="180"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg" />
+        tools:context=".screen.campus.SelectCampusFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:elevation="10dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Spinner
-            android:spinnerMode="dropdown"
-            android:popupBackground="@color/white"
-            android:background="@drawable/spinner"
-            android:id="@+id/spList"
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_height="match_parent"
+            android:rotation="180"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg" />
 
-        <Button
-            android:padding="16dp"
-            android:textStyle="bold"
-            android:backgroundTint="@color/main"
-            android:id="@+id/btnGoogle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đăng nhập" />
-    </LinearLayout>
-</FrameLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:elevation="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Spinner
+                android:spinnerMode="dropdown"
+                android:popupBackground="@color/white"
+                android:background="@drawable/spinner"
+                android:id="@+id/spList"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:padding="16dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/main"
+                android:id="@+id/btnGoogle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng nhập" />
+        </LinearLayout>
+    </FrameLayout>
+</layout>

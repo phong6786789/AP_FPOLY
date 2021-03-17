@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.subi.apsubi.R
 
 @Suppress("UNREACHABLE_CODE")
-class SelectCampusFragment : Fragment() {
+class SelectCampusFragment :Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,7 +27,7 @@ class SelectCampusFragment : Fragment() {
         val adapter = activity?.let {
             ArrayAdapter(
                 it.applicationContext,
-                android.R.layout.simple_list_item_checked, CampusViewModel.list
+                android.R.layout.simple_list_item_checked, CampusViewModel().list
             )
         }
         sp.adapter = adapter
@@ -60,5 +60,6 @@ class SelectCampusFragment : Fragment() {
 
         return view
     }
+
 
 }

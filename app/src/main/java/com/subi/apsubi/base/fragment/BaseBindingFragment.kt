@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.subi.apsubi.base.viewmodel.BaseViewModel
-import vn.com.unit.vinbus.screen.base.fragment.BaseFragment
 
 abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : BaseFragment() {
 
@@ -29,7 +28,7 @@ abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : Bas
         viewDataBinding?.apply {
             setVariable(bindingVariable, viewModel)
             executePendingBindings()
-            setLifecycleOwner(this@BaseBindingFragment)
+            lifecycleOwner = this@BaseBindingFragment
         }
     }
 }
