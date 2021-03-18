@@ -3,6 +3,8 @@ package com.subi.apsubi
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.WindowManager
+import androidx.navigation.fragment.NavHostFragment
+import kotlinx.android.synthetic.main.activity_home.*
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +16,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
     }
 
-//    override fun onBackPressed() {
-//        return
-//    }
+    //block onBackPressed() if it's first fragment
+    override fun onBackPressed() {
+        val currentFragment = NavHostFragment.findNavController(fragment).currentDestination?.id
+        if (currentFragment == R.id.seclectCampusFragment) {
+            return
+        } else {
+            super.onBackPressed()
+        }
+    }
 }

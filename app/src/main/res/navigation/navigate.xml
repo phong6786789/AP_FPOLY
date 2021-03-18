@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigate"
-    app:startDestination="@id/seclectCampusFragment">
+    app:startDestination="@id/campusFragment">
 
     <fragment
         android:id="@+id/seclectCampusFragment"
@@ -23,5 +23,14 @@
         android:name="com.subi.apsubi.screen.wedview.WedViewFragment"
         android:label="fragment_wed_view"
         tools:layout="@layout/fragment_wed_view" />
+    <fragment
+        tools:layout="@layout/fragment_campus"
+        android:id="@+id/campusFragment"
+        android:name="com.subi.apsubi.screen.campus.CampusFragment"
+        android:label="CampusFragment" >
+        <action
+            android:id="@+id/action_campusFragment_to_wedViewFragment"
+            app:destination="@id/wedViewFragment" />
+    </fragment>
 
 </navigation>

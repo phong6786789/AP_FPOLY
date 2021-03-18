@@ -31,6 +31,7 @@ class SelectCampusFragment :Fragment() {
             )
         }
         sp.adapter = adapter
+        sp.setSelection(2)
 
         login.setOnClickListener {
             val posision = sp.selectedItemPosition

@@ -17,6 +17,4 @@ class CampusViewModel @Inject constructor() : BaseViewModel() {
         "FPT PTCĐ Cần Thơ",
         "FPT PTCĐ Tây Nguyên"
     )
-
-
 }

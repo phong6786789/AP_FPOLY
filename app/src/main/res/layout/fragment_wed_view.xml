@@ -3,9 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/loading"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/loading"/>
+
     <WebView
+        android:visibility="gone"
         android:id="@+id/wv_login"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/lnLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textTest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="HELLO"
+            android:textSize="25sp" />
+    </LinearLayout>
 
 </FrameLayout>

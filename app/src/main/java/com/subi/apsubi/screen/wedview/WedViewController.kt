@@ -17,7 +17,8 @@ class WedViewController : WebViewClient() {
 
     override fun onPageFinished(view: WebView?, url: String?) {
 //        super.onPageFinished(view, url)
-        val cookies = CookieManager.getInstance().getCookie(url)
-        println("ahihi: $cookies")
+
+
     }
+
 }
