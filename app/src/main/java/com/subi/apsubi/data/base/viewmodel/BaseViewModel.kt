@@ -1,4 +1,4 @@
-package com.subi.apsubi.base.viewmodel
+package com.subi.apsubi.data.base.viewmodel
 
 
 import androidx.lifecycle.ViewModel

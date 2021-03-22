@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/homeFragment"
+        android:title="Home"
+        app:showAsAction="always"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_home"/>
+    <item android:id="@+id/newsFragment"
+        android:title="Tin tức"
+        app:showAsAction="always"
+        android:orderInCategory="1"
+        android:icon="@drawable/ic_tin_tuc"/>
+    <item android:id="@+id/scheduleFragment"
+        app:showAsAction="always"
+        android:title="Lịch học"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_lich_hoc"/>
+    <item android:id="@+id/scoreFragment"
+        app:showAsAction="always"
+        android:title="Điểm số"
+        android:orderInCategory="4"
+        android:icon="@drawable/ic_diem_so"/>
+    <item android:id="@+id/diemDanhFragment"
+        app:showAsAction="always"
+        android:title="Điểm danh"
+        android:orderInCategory="5"
+        android:icon="@drawable/ic_diem_danh"/>
+</menu>
