@@ -1,4 +1,4 @@
 package com.subi.apsubi.util
 
-object Utils {
+class Utils {
 }

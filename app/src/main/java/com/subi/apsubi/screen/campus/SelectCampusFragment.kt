@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.subi.apsubi.R
+import com.subi.apsubi.util.Constance
 
 @Suppress("UNREACHABLE_CODE")
 class SelectCampusFragment :Fragment() {
@@ -27,7 +28,7 @@ class SelectCampusFragment :Fragment() {
         val adapter = activity?.let {
             ArrayAdapter(
                 it.applicationContext,
-                android.R.layout.simple_list_item_checked, CampusViewModel().list
+                android.R.layout.simple_list_item_checked, Constance.list
             )
         }
         sp.adapter = adapter

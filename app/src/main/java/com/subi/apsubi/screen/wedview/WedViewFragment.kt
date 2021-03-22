@@ -10,18 +10,20 @@ import android.webkit.CookieManager
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.annotation.UiThread
 import androidx.fragment.app.Fragment
 import com.subi.apsubi.R
+import com.subi.apsubi.util.Constance
 import kotlinx.android.synthetic.main.fragment_wed_view.view.*
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
-import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
-import pl.droidsonroids.gif.GifDrawable
 import pl.droidsonroids.gif.GifImageView
+import java.io.IOException
+import java.lang.Exception
+import java.net.CookieHandler
 
 
 class WedViewFragment : Fragment() {
@@ -61,8 +63,8 @@ class WedViewFragment : Fragment() {
                 super.onPageFinished(view, url)
                 loading.visibility = View.GONE
                 wedview.visibility = View.VISIBLE
+//                layout.visibility = View.VISIBLE
                 val cookies = CookieManager.getInstance().getCookie(url)
-
             }
         }
     }

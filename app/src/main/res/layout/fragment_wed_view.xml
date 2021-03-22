@@ -24,12 +24,14 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-        <TextView
-            android:id="@+id/textTest"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="HELLO"
-            android:textSize="25sp" />
+       <androidx.core.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+           <TextView
+               android:id="@+id/textTest"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"/>
+       </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
 </FrameLayout>

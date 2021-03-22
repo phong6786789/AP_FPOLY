@@ -1,9 +1,7 @@
-package com.subi.apsubi.screen.campus
+package com.subi.apsubi.util
 
-import com.subi.apsubi.base.viewmodel.BaseViewModel
-import javax.inject.Inject
-
-class CampusViewModel @Inject constructor() : BaseViewModel() {
+object Constance {
+    const val BASE_URL = "https://ap.poly.edu.vn/sinh-vien/"
     val list = arrayOf(
         "FPT Polytechnic Hà Nội",
         "FPT Polytechnic Đà Nẵng",
