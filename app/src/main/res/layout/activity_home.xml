@@ -6,8 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/tvText"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/navigate"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="162dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
