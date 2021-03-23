@@ -24,49 +24,15 @@ class HomeFragment : Fragment() {
         enterTransition = MaterialFadeThrough()
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_home, container, false)
-        GlobalScope.launch {
-            val jsoup = Jsoup
-                .connect(Constance.DIEM_DANH)
-                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
-                .get()
-            val link: Elements = jsoup.select("div.kt-portlet")
 
-            val titleName = link.select("div.kt-portlet__head")
-            val table = link.select("tbody")
-
-            var tit = ArrayList<String>()
-            for (x in titleName) {
-                var title = x.select("h3").text()
-                tit.add(title)
-            }
-            var i = 0;
-            for (x in table) {
-                println("ahihi: ${tit[i]}")
-                var row = x.select("tr")
-                for (z in row) {
-                    var cols = z.select("td")
-                    var diemDanh = DiemDanh(
-                        cols[0].text(),
-                        cols[1].text(),
-                        cols[2].text(),
-                        cols[3].text(),
-                        cols[4].text(),
-                        cols[5].text(),
-                        cols[6].text(),
-                    )
-                    println("ahihi: $diemDanh")
-
-                }
-
-                i++
-
-            }
-//            for (x in link) {
-//                var title = x.select("h3").text()
-//            }
-
-        }
-
+//        val jsoupUser = Jsoup
+//            .connect(Constance.USER)
+//            .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+//            .get()
+//        val linkUser: Elements = jsoupUser.select("div.kt-portlet")
+////        for (x in linkUser){
+////            println("ahihi: ${x.select("span").text()}")
+////        }
 
         return view
     }

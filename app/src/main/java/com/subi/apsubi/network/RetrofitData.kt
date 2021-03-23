@@ -1,5 +1,7 @@
 package com.subi.apsubi.network
 
+import com.subi.apsubi.HomeActivity
+import com.subi.apsubi.data.model.DiemDanh
 import com.subi.apsubi.data.model.News
 import com.subi.apsubi.util.Constance
 import kotlinx.coroutines.*
@@ -47,6 +49,12 @@ object RetrofitData {
             }
 
             //Get điểm danh
+            val jsoupDD = Jsoup
+                .connect(Constance.DIEM_DANH)
+                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .get()
+            val linkDD: Elements = jsoupDD.select("div.kt-portlet")
+            list["diem_danh"] = linkDD
 
             //Get lịch học
 
@@ -91,5 +99,38 @@ object RetrofitData {
                 doInBackground()
             }
         onPostExecute(result)
+    }
+
+    fun getDiemDanh(link: Elements){
+        val titleName = link.select("div.kt-portlet__head")
+        val table = link.select("tbody")
+
+        var tit = ArrayList<String>()
+        for (x in titleName) {
+            var title = x.select("h3").text()
+            tit.add(title)
+        }
+        var i = 0
+        for (x in table) {
+//            println("ahihi: ${tit[i]}")
+            var row = x.select("tr")
+            for (z in row) {
+                var cols = z.select("td")
+                var diemDanh = DiemDanh(
+                    cols[0].text(),
+                    cols[1].text(),
+                    cols[2].text(),
+                    cols[3].text(),
+                    cols[4].text(),
+                    cols[5].text(),
+                    cols[6].text(),
+                )
+//                println("ahihi: $diemDanh")
+
+            }
+
+            i++
+
+        }
     }
 }
