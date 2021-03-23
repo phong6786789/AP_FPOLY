@@ -8,10 +8,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_home.*
 
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity() {
     var currentFragment: Int? = null
 
@@ -29,7 +29,9 @@ class HomeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         currentFragment = NavHostFragment.findNavController(fragment).currentDestination?.id
 
-        if (currentFragment == R.id.seclectCampusFragment) {
+        if (currentFragment == R.id.seclectCampusFragment||currentFragment == R.id.homeFragment||
+            currentFragment == R.id.newsFragment||currentFragment == R.id.scheduleFragment||
+            currentFragment == R.id.scoreFragment||currentFragment == R.id.diemDanhFragment) {
             return
         } else {
             super.onBackPressed()
@@ -54,5 +56,9 @@ class HomeActivity : AppCompatActivity() {
                 else -> bottom_nav.visibility = View.VISIBLE
             }
         }
+    }
+
+    companion object{
+        var TOKEN = ""
     }
 }
