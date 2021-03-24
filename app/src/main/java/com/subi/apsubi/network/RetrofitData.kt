@@ -1,8 +1,7 @@
 package com.subi.apsubi.network
 
 import com.subi.apsubi.HomeActivity
-import com.subi.apsubi.data.model.DiemDanh
-import com.subi.apsubi.data.model.News
+import com.subi.apsubi.data.model.*
 import com.subi.apsubi.util.Constance
 import kotlinx.coroutines.*
 import org.jsoup.Jsoup
@@ -11,8 +10,11 @@ import org.jsoup.select.Elements
 object RetrofitData {
     val TOKEN_LARAVEL = "laravel_session"
     private val list: MutableMap<String, Elements> = mutableMapOf()
-    fun getThongTinHocTap(laravel_session: String) {
+    fun login() {
         try {
+            //Token for all
+            val laravel_session = HomeActivity.TOKEN
+
             //Get New 1
             val job = GlobalScope.launch {
                 val listN1 = ArrayList<News>()
@@ -44,8 +46,6 @@ object RetrofitData {
 
                 val link3: Elements = jsoup3.select("div.kt-widget1__info")
                 list["new3"] = link3
-
-
             }
 
             //Get điểm danh
@@ -57,12 +57,37 @@ object RetrofitData {
             list["diem_danh"] = linkDD
 
             //Get lịch học
+            val jsoupUserx = Jsoup
+                .connect(Constance.LICH_HOC)
+                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .get()
+            val linkUserx: Elements = jsoupUserx.select("tbody")
+            list["lich_hoc"] = linkUserx
 
             //Get điểm
+            val jsoupUserd = Jsoup
+                .connect(Constance.DIEM_THEO_KY)
+                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .get()
+            val linkUserd: Elements = jsoupUserd.select("div.kt-portlet")
+
+            //Get all điểm
+            val jsoupUserAll = Jsoup
+                .connect(Constance.BANG_DIEM)
+                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .get()
+            val linkUserdAll: Elements = jsoupUserAll.select("div.kt-portlet")
 
             //Get thông tin cá nhân
-
-
+            val jsoupUser = Jsoup
+                .connect(Constance.USER)
+                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .get()
+            val linkUser: Elements = jsoupUser.select("input")
+            list["user"] = linkUser
+//            for (x in linkUser) {
+//                println("ahihi: ${x.attr("value")}")
+//            }
             //when complete
             runBlocking {
                 job.join()
@@ -101,7 +126,7 @@ object RetrofitData {
         onPostExecute(result)
     }
 
-    fun getDiemDanh(link: Elements){
+    fun getDiemDanh(link: Elements) {
         val titleName = link.select("div.kt-portlet__head")
         val table = link.select("tbody")
 
@@ -130,6 +155,101 @@ object RetrofitData {
             }
 
             i++
+
+        }
+    }
+
+    fun getLichHoc(elements: Elements) {
+        var i = 0
+        for (x in elements) {
+//            println("ahihi: ${tit[i]}")
+            var row = x.select("tr")
+            for (z in row) {
+                var cols = z.select("td")
+                var lichHoc = LichHoc(
+                    cols[0].text(),
+                    cols[1].text(),
+                    cols[2].text(),
+                    cols[3].text(),
+                    cols[4].text(),
+                    cols[5].text(),
+                    cols[6].text(),
+                    cols[7].text(),
+                    cols[8].text(),
+                    cols[9].text(),
+                    cols[10].select("a").attr("data")
+                )
+                println("ahihi: $lichHoc")
+
+            }
+
+            i++
+
+        }
+    }
+
+    fun getDiemTheoKy(linkUserd: Elements) {
+        val title = linkUserd.select("div.kt-portlet__head")
+        val table = linkUserd.select("tbody")
+        val ketQua = linkUserd.select("tfoot")
+        var tit = ArrayList<String>()
+        tit.clear()
+        for (x in title) {
+            val title = x.select("h3").text()
+            tit.add(title)
+        }
+        for (x in ketQua) {
+            val title = x.text()
+            tit.add(title)
+        }
+        var i = 0
+        for (x in table) {
+            println("ahihi: ${tit[i]}")
+            var row = x.select("tr")
+            for (z in row) {
+                var cols = z.select("td")
+                var diemTheoKy = DiemTheoKy(
+                    cols[0].text(),
+                    cols[1].text(),
+                    cols[2].text(),
+                    cols[3].text(),
+                    cols[4].text()
+                )
+                println("ahihi: $diemTheoKy")
+            }
+            println("ahihi: ${tit[4 + i]}")
+            println("ahihi: ----------------------------------------")
+
+            i++
+
+        }
+    }
+
+    fun getAllDiem(linkUserd: Elements) {
+        try {
+            val chuyenNganh = linkUserd.select("h3").text()
+            val bang_diem = linkUserd.select("tbody")
+            println("ahihi: $chuyenNganh")
+            for (x in bang_diem) {
+                var row = x.select("tr")
+                for (z in row) {
+                    var cols = z.select("td")
+                    var bangDiem = BangDiem(
+                        cols[0].text(),
+                        cols[1].text(),
+                        cols[2].text(),
+                        cols[3].text(),
+                        cols[4].text(),
+                        cols[5].text(),
+                        cols[6].text(),
+                        cols[7].text(),
+                        cols[8].text()
+                    )
+                    println("ahihi: $bangDiem")
+
+                }
+            }
+        } catch (ex: java.lang.Exception) {
 
         }
     }
