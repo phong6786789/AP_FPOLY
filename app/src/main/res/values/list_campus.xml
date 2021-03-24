@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="item_list">
+        <item>FPT Polytechnic Hà Nội</item>
+        <item>FPT Polytechnic Đà Nẵng</item>
+        <item>FPT Polytechnic Hồ Chí Minh</item>
+        <item>FPT Polytechnic Tây Nguyên</item>
+        <item>FPT Polytechnic Cần Thơ</item>
+        <item>FPT Polytechnic HiTech</item>
+        <item>FPT PTCĐ Hà Nội</item>
+        <item>FPT PTCĐ Hồ Chí Minh</item>
+        <item>FPT PTCĐ Đà Nẵng</item>
+        <item>FPT PTCĐ Cần Thơ</item>
+        <item>FPT PTCĐ Tây Nguyên</item>
+    </array>
+</resources>

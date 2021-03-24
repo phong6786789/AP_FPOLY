@@ -1,11 +1,11 @@
-package com.subi.apsubi.base.fragment
+package com.subi.apsubi.data.base.fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.subi.apsubi.base.viewmodel.BaseViewModel
+import com.subi.apsubi.data.base.viewmodel.BaseViewModel
 
 abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : BaseFragment() {
 

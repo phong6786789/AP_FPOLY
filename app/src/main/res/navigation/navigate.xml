@@ -11,17 +11,60 @@
         android:label="fragment_seclect_campus"
         tools:layout="@layout/fragment_seclect_campus">
         <action
-            android:id="@+id/action_seclectCampusFragment_to_wedViewFragment"
-            app:destination="@id/wedViewFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right" />
+            app:popExitAnim="@anim/slide_out_right"
+            android:id="@+id/action_seclectCampusFragment_to_wedViewFragment"
+            app:destination="@id/wedViewFragment" />
+        <action
+            android:id="@+id/action_seclectCampusFragment_to_diemDanhFragment"
+            app:destination="@id/diemDanhFragment" />
+        <action
+            android:id="@+id/action_seclectCampusFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_seclectCampusFragment_to_newsFragment"
+            app:destination="@id/newsFragment" />
+        <action
+            android:id="@+id/action_seclectCampusFragment_to_scheduleFragment"
+            app:destination="@id/scheduleFragment" />
+        <action
+            android:id="@+id/action_seclectCampusFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/wedViewFragment"
         android:name="com.subi.apsubi.screen.wedview.WedViewFragment"
         android:label="fragment_wed_view"
-        tools:layout="@layout/fragment_wed_view" />
-
+        tools:layout="@layout/fragment_wed_view">
+        <action
+            android:id="@+id/action_wedViewFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/diemDanhFragment"
+        android:name="com.subi.apsubi.screen.DiemDanhFragment"
+        android:label="fragment_attendance"
+        tools:layout="@layout/fragment_attendance" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.subi.apsubi.screen.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.subi.apsubi.screen.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/scheduleFragment"
+        android:name="com.subi.apsubi.screen.ScheduleFragment"
+        android:label="fragment_schedule"
+        tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.subi.apsubi.screen.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" />
 </navigation>
