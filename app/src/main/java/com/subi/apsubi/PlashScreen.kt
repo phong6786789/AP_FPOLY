@@ -15,7 +15,7 @@ class PlashScreen : AppCompatActivity() {
         )
         startActivity(
             Intent(this, HomeActivity::class.java),
-            ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fragment_fade_exit).toBundle()
+            ActivityOptions.makeCustomAnimation(this, R.anim.fade_in, R.anim.fade_in).toBundle()
         )
 
 

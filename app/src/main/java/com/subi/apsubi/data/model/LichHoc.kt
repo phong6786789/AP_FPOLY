@@ -1,7 +1,11 @@
 package com.subi.apsubi.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class LichHoc(
-    val stt: String,
+    @PrimaryKey val stt: String,
     val ngay: String,
     val phong: String,
     val diaChi: String,

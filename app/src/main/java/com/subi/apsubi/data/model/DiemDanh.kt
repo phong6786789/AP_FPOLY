@@ -1,7 +1,11 @@
 package com.subi.apsubi.data.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity
 data class DiemDanh(
-    val baihoc: String,
+    @PrimaryKey val baihoc: String,
     val ngay: String,
     val ca: String,
     val giangVien: String,

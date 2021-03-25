@@ -49,7 +49,7 @@
         tools:layout="@layout/fragment_attendance" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.subi.apsubi.screen.HomeFragment"
+        android:name="com.subi.apsubi.screen.home_fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment

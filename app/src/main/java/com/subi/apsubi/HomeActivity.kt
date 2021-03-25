@@ -29,9 +29,10 @@ class HomeActivity : AppCompatActivity() {
     override fun onBackPressed() {
         currentFragment = NavHostFragment.findNavController(fragment).currentDestination?.id
 
-        if (currentFragment == R.id.seclectCampusFragment||currentFragment == R.id.homeFragment||
-            currentFragment == R.id.newsFragment||currentFragment == R.id.scheduleFragment||
-            currentFragment == R.id.scoreFragment||currentFragment == R.id.diemDanhFragment) {
+        if (currentFragment == R.id.seclectCampusFragment || currentFragment == R.id.homeFragment ||
+            currentFragment == R.id.newsFragment || currentFragment == R.id.scheduleFragment ||
+            currentFragment == R.id.scoreFragment || currentFragment == R.id.diemDanhFragment
+        ) {
             return
         } else {
             super.onBackPressed()
@@ -58,7 +59,7 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
-    companion object{
+    companion object {
         var TOKEN = ""
     }
 }

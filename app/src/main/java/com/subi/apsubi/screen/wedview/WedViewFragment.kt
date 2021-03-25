@@ -54,6 +54,7 @@ class WedViewFragment : Fragment() {
 //        val url = arguments?.getString("url").toString()
 
         if (isNetworkAvailable()) {
+            isConnect = true
 //            Toast.makeText(context, "Có", Toast.LENGTH_SHORT).show()
             wedview.settings.javaScriptEnabled = true
             wedview.canGoBack()
@@ -65,22 +66,30 @@ class WedViewFragment : Fragment() {
                     loading.visibility = View.GONE
                     val cookies = CookieManager.getInstance().getCookie(url)
                     var laravel_session = cookies.substringAfterLast("laravel_session=", ";").trim()
-                    val bundle = bundleOf("token" to laravel_session)
-                    HomeActivity.TOKEN = laravel_session
-                    findNavController().navigate(
-                        R.id.action_wedViewFragment_to_homeFragment,
-                        bundle
-                    )
+                    //Check token
+                    if (laravel_session.isEmpty() || !laravel_session.substring(0, 6)
+                            .contains("laravel")
+                    ) {
+                        wedview.visibility = View.VISIBLE
+                    }
+                    if (laravel_session.length != 0) {
+                        val bundle = bundleOf("token" to laravel_session)
+                        HomeActivity.TOKEN = laravel_session
+                        findNavController().navigate(
+                            R.id.action_wedViewFragment_to_homeFragment,
+                            bundle
+                        )
+                    }
                 }
             }
         } else {
+            isConnect = false
             Toast.makeText(context, "Không có INTERNET, load data from local!", Toast.LENGTH_SHORT)
                 .show()
             findNavController().navigate(
                 R.id.action_wedViewFragment_to_homeFragment
             )
         }
-
     }
 
     private fun isNetworkAvailable(): Boolean {
@@ -89,6 +98,10 @@ class WedViewFragment : Fragment() {
             val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
             networkInfo?.isConnected ?: false
         } else false
+    }
+
+    companion object{
+        var isConnect = false
     }
 }
 
