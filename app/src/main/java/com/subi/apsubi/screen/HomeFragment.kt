@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.transition.MaterialFadeThrough
 import com.subi.apsubi.R
+import com.subi.apsubi.network.RetrofitData
 
 class HomeFragment : Fragment() {
     override fun onCreateView(

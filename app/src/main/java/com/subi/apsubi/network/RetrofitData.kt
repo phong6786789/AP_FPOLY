@@ -51,7 +51,7 @@ object RetrofitData {
             //Get điểm danh
             val jsoupDD = Jsoup
                 .connect(Constance.DIEM_DANH)
-                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
                 .get()
             val linkDD: Elements = jsoupDD.select("div.kt-portlet")
             list["diem_danh"] = linkDD
@@ -59,7 +59,7 @@ object RetrofitData {
             //Get lịch học
             val jsoupUserx = Jsoup
                 .connect(Constance.LICH_HOC)
-                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
                 .get()
             val linkUserx: Elements = jsoupUserx.select("tbody")
             list["lich_hoc"] = linkUserx
@@ -67,21 +67,21 @@ object RetrofitData {
             //Get điểm
             val jsoupUserd = Jsoup
                 .connect(Constance.DIEM_THEO_KY)
-                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
                 .get()
             val linkUserd: Elements = jsoupUserd.select("div.kt-portlet")
 
             //Get all điểm
             val jsoupUserAll = Jsoup
                 .connect(Constance.BANG_DIEM)
-                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
                 .get()
             val linkUserdAll: Elements = jsoupUserAll.select("div.kt-portlet")
 
             //Get thông tin cá nhân
             val jsoupUser = Jsoup
                 .connect(Constance.USER)
-                .cookie(RetrofitData.TOKEN_LARAVEL, HomeActivity.TOKEN)
+                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
                 .get()
             val linkUser: Elements = jsoupUser.select("input")
             list["user"] = linkUser
@@ -91,7 +91,6 @@ object RetrofitData {
             //when complete
             runBlocking {
                 job.join()
-                return@runBlocking list
             }
         } catch (ex: Exception) {
             ex.printStackTrace()
