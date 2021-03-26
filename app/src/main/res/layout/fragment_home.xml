@@ -6,11 +6,17 @@
     tools:context=".screen.home_fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/tvLoading"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_gravity="center"
+            android:text="WELCOME\nGIAO DIỆN ĐẸP NHẤT\nFPT POLYTECHNIC"
+            android:gravity="center"
+            android:textSize="30sp"
+            android:id="@+id/tvLoading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </androidx.core.widget.NestedScrollView>
 
 </FrameLayout>

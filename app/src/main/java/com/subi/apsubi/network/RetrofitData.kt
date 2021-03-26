@@ -1,118 +1,13 @@
 package com.subi.apsubi.network
 
-import com.subi.apsubi.HomeActivity
 import com.subi.apsubi.data.model.*
-import com.subi.apsubi.screen.home_fragment.HomeFragment
-import com.subi.apsubi.util.Constance
-import kotlinx.coroutines.*
-import org.jsoup.Jsoup
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.jsoup.select.Elements
 
 object RetrofitData {
-    val TOKEN_LARAVEL = "laravel_session"
-    private val list: MutableMap<String, Elements> = mutableMapOf()
-    var listBD: ArrayList<BangDiem> = ArrayList()
-    var listDD: ArrayList<DiemDanh> = ArrayList()
-    var listDTK: ArrayList<DiemTheoKy> = ArrayList()
-    var listLH: ArrayList<LichHoc> = ArrayList()
-    var listN1: ArrayList<News> = ArrayList()
-    var listN2: ArrayList<News> = ArrayList()
-    var listN3: ArrayList<News> = ArrayList()
-
-    fun login() {
-        val laravel_session = HomeActivity.TOKEN
-
-        GlobalScope.launch {
-            //Get điểm danh
-            val jsoupDD = Jsoup
-                .connect(Constance.DIEM_DANH)
-                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
-                .get()
-            val linkDD: Elements = jsoupDD.select("div.kt-portlet")
-//            list["diem_danh"] = linkDD
-            listDD.addAll(getDiemDanh(linkDD))
-
-            //Get lịch học
-            val jsoupUserx = Jsoup
-                .connect(Constance.LICH_HOC)
-                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
-                .get()
-            val linkUserx: Elements = jsoupUserx.select("tbody")
-//                list["lich_hoc"] = linkUserx
-            listLH.addAll(getLichHoc(linkUserx))
-
-            //Get điểm
-            val jsoupUserd = Jsoup
-                .connect(Constance.DIEM_THEO_KY)
-                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
-                .get()
-            val linkUserd: Elements = jsoupUserd.select("div.kt-portlet")
-//                list["diem"] = linkUserd
-            listDTK.addAll(getDiemTheoKy(linkUserd))
-
-            //Get all điểm
-            val jsoupUserAll = Jsoup
-                .connect(Constance.BANG_DIEM)
-                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
-                .get()
-            val linkUserdAll: Elements = jsoupUserAll.select("div.kt-portlet")
-//                list["allDiem"] = linkUserdAll
-            listBD.addAll(getAllDiem(linkUserdAll))
-
-            //Get thông tin cá nhân
-            val jsoupUser = Jsoup
-                .connect(Constance.USER)
-                .cookie(TOKEN_LARAVEL, HomeActivity.TOKEN)
-                .get()
-            val linkUser: Elements = jsoupUser.select("input")
-//                list["user"] = linkUser
-            listBD.addAll(getAllDiem(linkUserdAll))
-
-            val jsoup = Jsoup
-                .connect(Constance.NEW1)
-                .cookie(TOKEN_LARAVEL, laravel_session)
-                .get()
-            //Get new
-            val link: Elements = jsoup.select("div.kt-widget1__info")
-//            list["new1"] = link
-            listN1.addAll(getNews(link))
-
-            listN2.clear()
-            val jsoup2 = Jsoup
-                .connect(Constance.NEW2)
-                .cookie(TOKEN_LARAVEL, laravel_session)
-                .get()
-
-            val link2: Elements = jsoup2.select("div.kt-widget1__info")
-//            list["new2"] = link2
-            listN2.addAll(getNews(link2))
-
-
-            listN3.clear()
-            val jsoup3 = Jsoup
-                .connect(Constance.NEW3)
-                .cookie(TOKEN_LARAVEL, laravel_session)
-                .get()
-
-            val link3: Elements = jsoup3.select("div.kt-widget1__info")
-//            list["new3"] = link3
-            listN3.addAll(getNews(link3))
-
-            //Send
-            HomeFragment().loadata_INTERNET(
-                    listBD,
-                    listDD,
-                    listDTK,
-                    listLH,
-                    listN1,
-                    listN2,
-                    listN3
-                )
-        }
-
-
-    }
-
     fun getUser(elements: Elements) {
         for (x in elements) {
 //            println("ahihi: ${x.attr("value")}")

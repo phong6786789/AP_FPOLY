@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.subi.apsubi.data.model.*
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -30,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
         currentFragment = NavHostFragment.findNavController(fragment).currentDestination?.id
 
         if (currentFragment == R.id.seclectCampusFragment || currentFragment == R.id.homeFragment ||
-            currentFragment == R.id.newsFragment || currentFragment == R.id.scheduleFragment ||
+            currentFragment == R.id.newPagerFragment || currentFragment == R.id.scheduleFragment ||
             currentFragment == R.id.scoreFragment || currentFragment == R.id.diemDanhFragment
         ) {
             return
@@ -61,5 +62,13 @@ class HomeActivity : AppCompatActivity() {
 
     companion object {
         var TOKEN = ""
+        var isConnect = false
+        var listBD: ArrayList<BangDiem> = ArrayList()
+        var listDD: ArrayList<DiemDanh> = ArrayList()
+        var listDTK: ArrayList<DiemTheoKy> = ArrayList()
+        var listLH: ArrayList<LichHoc> = ArrayList()
+        var listN1: ArrayList<News> = ArrayList()
+        var listN2: ArrayList<News> = ArrayList()
+        var listN3: ArrayList<News> = ArrayList()
     }
 }

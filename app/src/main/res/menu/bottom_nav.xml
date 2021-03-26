@@ -6,7 +6,7 @@
         app:showAsAction="always"
         android:orderInCategory="3"
         android:icon="@drawable/ic_home"/>
-    <item android:id="@+id/newsFragment"
+    <item android:id="@+id/newPagerFragment"
         android:title="Tin tức"
         app:showAsAction="always"
         android:orderInCategory="1"

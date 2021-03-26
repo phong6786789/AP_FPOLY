@@ -1,12 +1,15 @@
 package com.subi.apsubi.screen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import com.google.android.material.transition.MaterialFadeThrough
+import com.subi.apsubi.HomeActivity
 import com.subi.apsubi.R
+import kotlinx.android.synthetic.main.fragment_score.view.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -37,7 +40,10 @@ class ScoreFragment : Fragment() {
     ): View? {
         enterTransition = MaterialFadeThrough()
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_score, container, false)
+        val view =  inflater.inflate(R.layout.fragment_score, container, false)
+        val tv: TextView = view.score
+        tv.text = HomeActivity.listDTK.toString()
+        return view
     }
 
     companion object {
