@@ -56,24 +56,6 @@ class NewsFragment1 : BaseBindingFragment<FragmentNewsBinding, NewViewModel>() {
 
         override fun onClickScan(value: News) {
             loadDialog(value.link)
-
-//            GlobalScope.launch {
-//                val jsoup3 = Jsoup
-//                    .connect(value.link)
-//                    .cookie("laravel_session", HomeActivity.TOKEN)
-//                    .get()
-//
-//                val link: Elements = jsoup3.select("div.kt-portlet__body")
-//
-//                var text = ""
-//                for (x in link) {
-//                    text += x.text().toString() + { R.string.new_line }
-//                }
-//                Handler(Looper.getMainLooper()).post(Runnable {
-//                })
-//
-//
-//            }
         }
     }
 
