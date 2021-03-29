@@ -95,23 +95,28 @@ class WedViewFragment : Fragment() {
                             HomeActivity.TOKEN = laravel_session
                             loadData(laravel_session)
 
-                        } else {
-                            isConnect = false
-                            Toast.makeText(
-                                context,
-                                "Không có INTERNET, load data from local!",
-                                Toast.LENGTH_SHORT
-                            )
-                                .show()
-                            findNavController().navigate(
-                                R.id.action_wedViewFragment_to_homeFragment
-                            )
+                        }
+                        else{
+                            wedview.visibility = View.VISIBLE
+
                         }
                     }
                 }
             }
+        } else {
+            isConnect = false
+            Toast.makeText(
+                context,
+                "Không có INTERNET, load data from local!",
+                Toast.LENGTH_SHORT
+            )
+                .show()
+            findNavController().navigate(
+                R.id.action_wedViewFragment_to_homeFragment
+            )
         }
     }
+
 
     @UiThread
     private fun loadData(laravelSession: String) {
