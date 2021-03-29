@@ -27,6 +27,7 @@ import com.subi.apsubi.screen.news.NewViewModel
 import com.subi.apsubi.screen.news.NewsAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.fragment_schedule.view.*
+import kotlinx.android.synthetic.main.info_full.*
 import kotlinx.android.synthetic.main.new_reader.*
 
 class ScheduleFragment : BaseBindingFragment<FragmentScheduleBinding, ScheduleViewModel>() {
@@ -51,36 +52,30 @@ class ScheduleFragment : BaseBindingFragment<FragmentScheduleBinding, ScheduleVi
     private val onItemClick = object : ScheduleAdapter.OnItemClickListener {
 
         override fun onClickScan(value: LichHoc) {
-            loadDialog(value.chitiet)
+            loadDialog(value.mon, value.chitiet)
         }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private fun loadDialog(text: String) {
+    private fun loadDialog(tit:String, texts: String) {
 
         val dialog = Dialog(requireActivity())
-        dialog.setContentView(R.layout.new_reader)
+        dialog.setContentView(R.layout.info_full)
         dialog.setCancelable(false)
         val window = dialog.window
-        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+        window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         if (dialog.window != null) {
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.WHITE))
         }
         dialog.window?.setWindowAnimations(R.style.Animation_Design_BottomSheetDialog)
 
-        val wedview: WebView = dialog.findViewById(R.id.wv_read_new)
-        wedview.settings.javaScriptEnabled = true
-        wedview.canGoBack()
-        wedview.settings.userAgentString = "Chrome/89.0.4389.90"
-        wedview.loadUrl(text)
-        wedview.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
-                dialog.loadingNew.visibility = View.GONE
-                wedview.visibility = View.VISIBLE
-            }
-        }
-        dialog.btnClose.setOnClickListener {
+        val title: TextView = dialog.findViewById(R.id.tvTitleSchedule)
+        val text: TextView = dialog.findViewById(R.id.tvChiTiet)
+
+        title.text = "CHI TIẾT"
+        text.text = texts
+
+        dialog.btnCloseSch.setOnClickListener {
             dialog.dismiss()
         }
         dialog.show()
