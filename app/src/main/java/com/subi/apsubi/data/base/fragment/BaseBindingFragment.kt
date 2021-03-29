@@ -7,7 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.subi.apsubi.data.base.viewmodel.BaseViewModel
 
-abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : BaseFragment() {
+abstract class BaseBindingFragment<V : ViewDataBinding, M : BaseViewModel> : BaseFragment<Any?, Any?>() {
 
     var viewDataBinding: V? = null
 

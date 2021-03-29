@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".screen.ScheduleFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.core.widget.NestedScrollView
+    <data>
+        <variable
+            name="scheduleViewModel"
+            type="com.subi.apsubi.screen.schedule.ScheduleViewModel" />
+    </data>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/schedu"
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="8dp"
+            android:layout_centerInParent="true"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            android:id="@+id/rcv_schedule"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 
-    </androidx.core.widget.NestedScrollView>
-</FrameLayout>
+</layout>

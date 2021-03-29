@@ -86,19 +86,11 @@ class WedViewFragment : Fragment() {
                             loading.visibility = View.GONE
                             wedview.visibility = View.VISIBLE
                         }
-                    }
-
-                    if (url != null) {
-                        if (url.contains("https://ap.poly.edu.vn/sinh-vien")) {
+                        else{
                             println("Login successfull")
                             wedview.visibility = View.GONE
                             HomeActivity.TOKEN = laravel_session
                             loadData(laravel_session)
-
-                        }
-                        else{
-                            wedview.visibility = View.VISIBLE
-
                         }
                     }
                 }

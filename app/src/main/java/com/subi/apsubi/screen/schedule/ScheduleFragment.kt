@@ -1,58 +1,57 @@
-package com.subi.apsubi.screen.news.screen
+package com.subi.apsubi.screen.schedule
 
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.transition.MaterialFadeThrough
 import com.subi.apsubi.BR
 import com.subi.apsubi.HomeActivity
 import com.subi.apsubi.R
 import com.subi.apsubi.data.base.fragment.BaseBindingFragment
+import com.subi.apsubi.data.base.fragment.BaseFragment
+import com.subi.apsubi.data.model.LichHoc
 import com.subi.apsubi.data.model.News
-import com.subi.apsubi.databinding.FragmentNewsBinding
+import com.subi.apsubi.databinding.FragmentScheduleBinding
 import com.subi.apsubi.screen.news.NewViewModel
 import com.subi.apsubi.screen.news.NewsAdapter
-import com.subi.apsubi.util.Constance
+import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_schedule.view.*
 import kotlinx.android.synthetic.main.new_reader.*
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import org.jsoup.Jsoup
-import org.jsoup.select.Elements
 
-class NewsFragment1 : BaseBindingFragment<FragmentNewsBinding, NewViewModel>() {
+class ScheduleFragment : BaseBindingFragment<FragmentScheduleBinding, ScheduleViewModel>() {
     override val bindingVariable: Int
-        get() = BR.newViewModel
-    override val viewModel: NewViewModel
-        get() = ViewModelProvider(this).get(NewViewModel::class.java)
+        get() = BR.scheduleViewModel
+    override val viewModel: ScheduleViewModel
+        get() = ViewModelProvider(this).get(ScheduleViewModel::class.java)
     override val layoutResource: Int
-        get() = R.layout.fragment_news
+        get() = R.layout.fragment_schedule
 
     override fun initVariable(savedInstanceState: Bundle?, view: View) {
-            viewDataBinding?.rcvNews?.apply {
-                adapter = NewsAdapter(viewModel.list1, onItemClick)
-                hasFixedSize()
-                layoutManager = LinearLayoutManager(context)
-            }
+        viewDataBinding?.rcvSchedule?.apply {
+            adapter = ScheduleAdapter(viewModel.list, onItemClick)
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(context)
+        }
     }
 
-    private val onItemClick = object : NewsAdapter.OnItemClickListener {
+    override fun initData(savedInstanceState: Bundle?, rootView: View) {
+    }
 
-        override fun onClickScan(value: News) {
-            loadDialog(value.link)
+    private val onItemClick = object : ScheduleAdapter.OnItemClickListener {
+
+        override fun onClickScan(value: LichHoc) {
+            loadDialog(value.chitiet)
         }
     }
 
@@ -86,9 +85,5 @@ class NewsFragment1 : BaseBindingFragment<FragmentNewsBinding, NewViewModel>() {
         }
         dialog.show()
     }
-
-    override fun initData(savedInstanceState: Bundle?, rootView: View) {
-    }
-
 
 }
