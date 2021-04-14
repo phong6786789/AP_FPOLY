@@ -18,21 +18,25 @@
         app:cardCornerRadius="4dp">
 
         <LinearLayout
-            android:padding="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:orientation="vertical"
+            android:padding="8dp">
 
             <TextView
-                android:layout_marginBottom="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{one_sch_item.ngay}" />
-            <View
-                android:background="@color/main"
                 android:layout_marginBottom="8dp"
+                android:text="@{one_sch_item.ngay}" />
+
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"/>
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:background="@color/main" />
 
             <LinearLayout
                 android:layout_width="match_parent"

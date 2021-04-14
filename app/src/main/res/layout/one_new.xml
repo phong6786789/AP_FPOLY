@@ -22,7 +22,9 @@
         card_view:cardElevation="8dp">
 
         <LinearLayout
-            android:background="@android:drawable/list_selector_background"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

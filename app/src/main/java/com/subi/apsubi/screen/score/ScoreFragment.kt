@@ -1,4 +1,4 @@
-package com.subi.apsubi.screen
+package com.subi.apsubi.screen.score
 
 import android.os.Bundle
 import android.view.LayoutInflater
